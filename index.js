@@ -9,13 +9,13 @@ const generateData = ({shape, shapeColor, textColor, text}) => {
     let selectShape;
     if (shape === 'Circle') {
         selectShape = new Circle();
-        svg += `circle cx="150" cy="150" r="80"`;
+        svg += `circle cx="150" cy="100" r="80"`;
     } else if (shape === 'Square') {
         selectShape = new Square();
-        svg += `rect x="10" y="10" width="150" height="150"`;
+        svg += `rect x="75" y="25" width="150" height="150"`;
     } else {
         selectShape = new Triangle();
-        svg += `polygon height="150" width="150" points="0,200 300,200 150,0"`;
+        svg += `polygon height="150" width="150" points="20,200,275,200 150,0"`;
     };
     svg += ` fill="${shapeColor}"/>
     <text x="150" y="125" font-size="60" text-anchor="middle" fill="${textColor}">${text}</text>
