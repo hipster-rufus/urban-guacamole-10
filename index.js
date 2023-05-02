@@ -4,25 +4,25 @@ const { Circle, Square, Triangle } = require('./lib/shapes.js');
 
 const generateData = ({shape, shapeColor, textColor, text}) => {
     let svg = "";
-    svg = `<svg version-"1.1" width="300" height="200 xmlns=""http://www.w3.org/2000/svg">
-        < `;
-        let selectedShape;
-        if (shape === 'Circle') {
-            selectedShape = new Circle();
-            svg += `circle cx="150" cy="150" r="80" fill="${shapeColor}"`;
-        } else if (shape === 'Square') {
-            selectedShape = new Square();
-            svg += `rect x="10" y="10" width="150" height="150" fill="${shapeColor}"`;
-        } else {
-            selectedShape = new Triangle();
-            svg += `polygon height="150" width="150" points="0,200 300,200 150,0" fill="${shapeColor}"`;
-        };
-    svg += `/>
-        <text x="150" y="125" font-size="60" text-anchor="middle" fill="${textColor}">${text}</text>
+    svg = `<svg width="300" height="200" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <`;
+    let selectShape;
+    if (shape === 'Circle') {
+        selectShape = new Circle();
+        svg += `circle cx="150" cy="150" r="80"`;
+    } else if (shape === 'Square') {
+        selectShape = new Square();
+        svg += `rect x="10" y="10" width="150" height="150"`;
+    } else {
+        selectShape = new Triangle();
+        svg += `polygon height="150" width="150" points="0,200 300,200 150,0"`;
+    };
+    svg += ` fill="${shapeColor}"/>
+    <text x="150" y="125" font-size="60" text-anchor="middle" fill="${textColor}">${text}</text>
     </svg>
     `;
 
-    fs.writeFile('/examples/logo.svg', svg, (err) => {
+    fs.writeFile(`./examples/${text}.svg`, svg, (err) => {
         err ? console.log(err) : console.log('File successfully created! Navigate to the "examples" folder to find your new logo.')
     })
 };
@@ -32,17 +32,17 @@ function userPrompt() {
     .prompt([
         {
             type: 'input',
-            message: 'What text would you like to display on your logo?',
-            name: 'text'
+            message: 'Enter the text for your logo:',
+            name: 'text',
         },
         {
             type: 'input',
-            message: 'What is the color of the text?',
+            message: 'Enter the color of your text:',
             name: 'textColor'
         },
         {
             type: 'list',
-            message: 'What is the shape of your logo?',
+            message: 'Choose a shape:',
             name: 'shape',
             choices: [
                 'Circle',
@@ -51,8 +51,8 @@ function userPrompt() {
             ]
         },
         {
-            type: 'list',
-            message: 'What is the color of the shape?',
+            type: 'input',
+            message: 'Enter the color of the shape:',
             name: 'shapeColor'
         }
     ])
