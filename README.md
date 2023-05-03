@@ -14,7 +14,7 @@ This will prompt a series of questions which will generate your new SVG logo. On
 
 To watch a full demonstration of the program, click the link below:
 
-[Demonstration Video]()
+[Demonstration Video](https://drive.google.com/file/d/1LqGF4gITQyX2SabXMDPhQCEkEdscaaFk/view)
 
 ## Credits
 The following websites were used to generate this project:
