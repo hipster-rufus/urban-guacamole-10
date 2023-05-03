@@ -1,11 +1,15 @@
+// Imports required node pacakges
 const inquirer = require('inquirer');
 const fs = require('fs');
+// Exports classes from shapes.js to be used
 const { Circle, Square, Triangle } = require('./lib/shapes.js');
 
+// Function to write SVG file using the user's answers from the inquirer prompt
 const generateData = ({shape, shapeColor, textColor, text}) => {
     let svg = "";
     svg = `<svg width="300" height="200" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <`;
+    // Conditional statement to add to string based on the user's choice of shape
     let selectShape;
     if (shape === 'Circle') {
         selectShape = new Circle();
@@ -21,12 +25,14 @@ const generateData = ({shape, shapeColor, textColor, text}) => {
     <text x="150" y="125" font-size="60" text-anchor="middle" fill="${textColor}">${text}</text>
     </svg>
     `;
-
+    // Generates file using the data above and saves in the "examples" directory
     fs.writeFile(`./examples/${text}.svg`, svg, (err) => {
         err ? console.log(err) : console.log('File successfully created! Navigate to the "examples" folder to find your new logo.')
     })
 };
 
+
+// Function which uses inquirer.prompt to give the user questions to answer in their terminal 
 function userPrompt() {
     inquirer
     .prompt([
@@ -59,4 +65,5 @@ function userPrompt() {
     .then(generateData);
 }
 
+// Calls the userPrompt function which initializes the inquirer.prompt questions for the user
 userPrompt();
